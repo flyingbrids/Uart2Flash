@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Project/space_inventor_boot/vitas/flashtest/build",
+  "command": "C:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe  -isystem C:/Project/space_inventor_boot/vitas/platform/export/platform/sw/standalone_ps7_cortexa9_0/include -isystem C:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include -isystem C:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/x86_64-oesdk-mingw32/usr/lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include-fixed -isystem C:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/aarch32-xilinx-eabi/usr/include  -O2 -DSDT -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -MMD -MP -specs=C:/Project/space_inventor_boot/vitas/platform/export/platform/sw/standalone_ps7_cortexa9_0/Xilinx.spec -IC:/Project/space_inventor_boot/vitas/platform/export/platform/sw/standalone_ps7_cortexa9_0/include -Wall -Wextra      -O0  -g3     -U__clang__ -o CMakeFiles/flashtest.elf.dir/flash.c.obj -c C:/Project/space_inventor_boot/vitas/flashtest/src/flash.c",
+  "file": "C:/Project/space_inventor_boot/vitas/flashtest/src/flash.c"
+}
+]
