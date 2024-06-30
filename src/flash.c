@@ -65,8 +65,8 @@
 #define PAGE_SIZE		256
 #define NUM_SECTORS		0x100
 #define BAUD_RATE       115200
-#define FILE_SIZE       1614016 
-//#define FILE_SIZE       167112
+//#define FILE_SIZE       1614016 
+#define FILE_SIZE       167112
 #define DUMMY_DATA_SIZE 0x8000
 #define MAX_DATA        DUMMY_DATA_SIZE + FILE_SIZE      
 #define XFER_CHUNK      1    
@@ -191,7 +191,9 @@ int main(void)
 		    SentCount += XUartPs_Send(&Uart_Ps,&Wait[SentCount], 1);
 	    }
         TeraTermFile_Receive(FILE_SIZE);
-        
+        // modify address
+        //Xil_Out32(DDR_MEMB0 + DUMMY_DATA_SIZE + 0xcd0, 0x20000);
+
         Status = QspiFlashPolledExample(&QspiInstance, Offset);
         //Offset = Offset + MAX_DATA;  
         if (Status != XST_SUCCESS) {
@@ -227,9 +229,10 @@ int QspiFlashPolledExample(XQspiPs *QspiInstancePtr, int offset)
 		FlashWrite(QspiInstancePtr, (Page * PAGE_SIZE) + offset,
 			   PAGE_SIZE, WRITE_CMD);
 	}
-
-	for (unsigned int Count = 0; Count < MAX_DATA; Count++) {
-		if (*(DDR_MEMB0+Count) != *(DDR_MEMB1+Count + DATA_OFFSET)) {
+    FlashRead(&QspiInstance, 0, MAX_DATA, READ_CMD);
+    usleep(100);
+	for (unsigned int Count = 0; Count < FILE_SIZE; Count++) {
+		if (*(DDR_MEMB0+Count + DUMMY_DATA_SIZE) != *(DDR_MEMB1+Count + DATA_OFFSET + DUMMY_DATA_SIZE)) {
 			return XST_FAILURE;
 		}
 	}
